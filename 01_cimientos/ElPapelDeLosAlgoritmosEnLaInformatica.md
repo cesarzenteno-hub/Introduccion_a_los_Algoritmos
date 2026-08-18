@@ -117,4 +117,90 @@ Selecciona una estructura de datos que hayas visto anteriormente, menciona sus f
 
 Plantea un problema del mundo real en el que solo sirva la mejor solución. Después, plantea uno en el que una solución “aproximadamente” óptima sea suficiente.
 
--- TODO : Continuar en la pagina 11
+## 1.2 Los algoritmos como una tecnología
+
+Imagina que las computadoras son infinitamente rápidas y la memoria de cómputo es gratis. ¿Tendrías alguna razón para estudiar algoritmos? La respuesta es sí, aunque no sea por ninguna otra razón que demostrar que los métodos de tu solución finalizan y lo hacen con la respuesta correcta.
+
+Si las computadoras tuvieran velocidad infinita, cualquier método correcto de resolución de problemas serviría. Probablemente querrías que tu implementación sea sin los límites de las buenas prácticas de la ingeniería de software (por ejemplo, tu implementación debe estar bien diseñada y documentada), pero casi siempre usarías cualquier método que sea fácil de implementar.
+
+Por supuesto, las computadoras pueden ser rápidas, pero no son infinitamente rápidas. Y la memoria puede no ser costosa, pero no es gratis. El tiempo de cómputo es, por lo tanto, un recurso limitado, así como el espacio en memoria. Debes usar estos recursos sabiamente, y los algoritmos que son eficientes en términos de tiempo y espacio te ayudarán con eso.
+
+### Eficiencia
+
+Diferentes algoritmos diseñados para resolver el mismo problema a menudo difieren dramáticamente en su eficiencia. Esas diferencias pueden ser mucho más significantes que las diferencias causadas por el hardware y software.
+
+Como un ejemplo, en el Capítulo 2, veremos dos algoritmos de ordenamiento. El primero, conocido como **ordenamiento por inserción,** toma un tiempo de apenas $c_1n^2$ para ordenar $n$ elementos. donde $c_1$ es una constante que no depende de $n$. En otras palabras, toma un tiempo proporcional justo de $n^2$. El segundo, **ordenamiento por fusión,** toma un tiempo de apenas $c_2$ lg $n$ donde lg $n$ se refiere a $log_2n$ y $c_2$ es otra constante que tampoco depende de $n$. El ordenamiento por inserción normalmente tiene un factor constante más pequeño que el ordenamiento por fusión, así $c_1<c_2$. Veremos que los factores constantes pueden tener un impacto mucho menor en el tiempo de procesamiento que la dependencia del tamaño de entrada de $n$. Vamos a escribir el tiempo de procesamiento del ordenamiento por inserción como $c_1n \cdot n$ y al tiempo de procesamiento del ordenamiento por fusión como $c_2 n \cdot lg n$. Así vemos que mientras el ordenamiento por inserción tiene un factor de $n$ en su tiempo de procesamiento, el odenamiento por fusión tiene un factor de $lgn$, el cual es mucho más pequeño. (Por ejemplo, cuando $n=1000$, $lgn$ es aproximadamente $10$, y cuando $n$ equivale a un millón, $lgn$ es aproximadamente solo $20$.) A pesar de que el ordenamiento por inserción normalemente corre más rápido que el ordenamiento por fusión con tamaños de entrada pequeños, una vez que el tamaño de entrada $n$ se vuelve lo suficientemente grande, la ventaja del ordenamiento por fusión de $lgn$ vs. $n$ hará más que compensar la diferencia en los factores constantes. No importa qué tan pequeño sea $c_1$ con relación a $c_2$, siempre habrá un punto de encrucijada donde el ordenamiento por fusión sea más rápido pasado ese punto.
+
+Para un ejemplo concreto, vamos a enfrentar una computadora rápida (computadora A) corriendo un ordenamiento por inserción contra una computadora lenta (computadora B) corriendo un ordenamiento por fusión. Ambas deben ordenar un arreglo de 10 millones de números. (Aunque 10 millones de números puedan parecer muchos, si son números enteros de 8 bits, entonces la entrada ocuparía cerca de 80 megabites, lo que se ajusta a la memoria incluso de una laptop poco costosa la mayoría de veces). Supón que la computadora A ejecuta 10 mil millones de instrucciones por segundo (más rápido que cualquier computo secuencial sencillo a la fecha de este escrito) y la computadora B ejecuta solo 10 millones de instrucciones por segundo, así que la computadora A es 1000 veces más rápida que la computadora B en poder de cómputo crudo. Para hacer la diferencia un poco más dramática, supongamos que el mejor programador del mundo codifica el algoritmo de ordenamiento por inserción en el lenguaje máquina para la computadora A, y el código que resulta requiere la cantidad de $2n^2$ instrucciones para ordenar $n$ cantidad de números. Supongamos que un simple programador promedio implementa el ordenamiento por fusión, usando un lenguaje de alto nivel con un compilador ineficiente, con el código resultante requiriendo la cantidad de $50n$ lg $n$ instrucciones. Para ordenar 10 millones de números, a la computadora A le toma
+
+$$
+\frac{2 \cdot (10^7)^2\ \text{instrucciones}}
+{10^{10}\ \text{instrucciones/segundo}} =
+20,000\ \text{segundos (mas de 5 horas y media),}
+$$
+
+mientras que a la computadora B le toma
+
+$$
+\frac {50 \cdot 10^7 lg 10^7\ \text{instrucciones}}
+{10^7\ \text{instrucciones/segundo}}
+\approx 1163\ \text{segundos (menos de 20 minutos).}
+$$
+
+!Si usamos un algoritmo cuyo tiempo de ejecución crece más lento, incluso con un compilador pobre, la computadora B corre más de 17 veces más rápido que la computadora A! La ventaja del ordenamiento por fusión es incluso más pronunciada cuando ordenamos 100 millones de números: mientras que al ordenamiento por inserción le toma más de 23 días, al ordenamiento por fusión le toma menos de cuatro horas. En general, mientras el tamaño del problema crece, también lo hace la ventaja relativa del ordenamiento por fusión.
+
+### Algoritmos y otras tecnologías
+
+El ejemplo anterior nos muestra que debemos considerar algoritmos, como los de hardware de cómputo, como **tecnología.** El rendimiento total del sistema depende tanto de elegir algoritmos eficientes como de elegir hardware rápido. Rápidos avances se están haciendo en otras tecnologías de la computación, así como se están haciendo en algoritmos también.
+
+Podrías preguntarte si los algoritmos son verdaderamente importantes en computadoras contemporáneas a la luz de otras tecnologías avanzadas, tales como
+
+- arquitectura avanzada de computadoras y tecnologías de fabricación,
+- de uso sencillo, intuitivo, interfaces gráficas de usuario (GUIs),
+- sistemas orientados a objetos,
+- tecnologías de integración Web, y
+- redes rápidas, tanto alámbricas como inalámbricas.
+
+La respuesta es sí. Aunque algunas aplicaciones no requieren contenido algorítmico explícito al nivel de aplicación (uno simple como una aplicación basada en la web), muchas los utilizan. Por ejemplo, considera un servicio de una aplicación basada en la web que determina como viajar de una locación a otra. Su implementación podría depender de la velocidad del hardware, una interfaz gráfica de usuario, redes de área extensa, y también posiblemente una orientación a objetos. Como sea, también podría requerir algoritmos para ciertas operaciones, tales como encontrar rutas (probablemente usando un algoritmo del camino más corto), renderizado de mapas, e interpolación de direcciones.
+
+Además, incluso una aplicación que no requiere un contenido algorítmico al nivel de aplicación depende de sobremanera de algoritmos. ¿Las aplicaciones dependen de hardware veloz? El diseño de hardware utilizó algoritmos. ¿La aplicación depende de interfaces gráficas de usuario? El diseño de cualquier GUI depende de algoritmos. ¿La aplicación depende de conexiones de red? El enrutamiento en la red depende en gran medida de algoritmos. ¿La aplicación fue escrito en un lenuaje diferente al código máquina? Entonces fue procesado por un compilador, un intérprete, o un ensamblador, todos ellos hacen un uso extenso de algoritmos. Los algoritmos están en el corazón de la mayoría de las tecnologías usadas en la computación contemporánea.
+
+Además, con el crecimiento continuo de las capacidades de las computadoras, las utilizamos para resolver problemas más grandes que nunca antes. Como vimos en la comparación anterior entre el ordenamiento por inserción y el ordenamiento por fusión, es cuando hay problemas de gran tamaño cuando la diferencia entre los algoritmos se vuelven particularmente prominentes.
+
+Tener una base sólida de conocimientos en técnica y algoritmos es una de las características que separan a un programador verdaderamente hábil de los novatos. Con la tecnología computacional moderna, puedes completar ciertas tareas sin saber mucho acerca de algoritmos, pero con un buen trasfondo en algoritmos, puede hacer mucho, mucho más.
+
+### Ejercicios
+
+#### 1.2-1
+
+Proporciona un ejemplo de una aplicación que requiere contenido algorítmico en el nivel de aplicación, y discute la función del algoritmo involucrado.
+
+#### 1.2-2
+
+Supon que estamos comparando implementaciones de ordenamientos de inserción y ordenamientos de fusión en la misma máquina. Para las entradas de tamaño $n$, el ordenamiento de inserción corre en $8n^2$ pasos, mientras que el ordenamiento por fusión corre en $64n\ lg\ n$ pasos. ¿Para cuáles valores de $n$ el ordenamiento por inserción vence al ordenamiento por fusión?
+
+#### 1.2-3
+
+¿Cuál es el valor más pequeño de $n$ tal que un algoritmo cuyo tiempo de procesamiento es $100n^2$ corre más rápido que un algoritmo cuyo tiempo de procesamiento es $2^n$ en la misma máquina?
+
+## Problemas
+
+### 1-1 Comparación de tiempos de procesamiento
+
+Para cada función $f(n)$ y tiempo $t$ en la siguiente tabla, determina el tamaño más grande de $n$ de un problema que puede ser resuelto en tiempo $t$, asumiendo que el algoritmo que resuelve el problema toma $f(n)$ microsegundos.
+
+|             | 1<br>segundo | 1<br>minuto | 1<br>hora | 1<br>día | 1<br>mes | 1<br>año | 1<br>siglo |
+|:-----------:|:------------:|:-----------:|:---------:|:--------:|:--------:|:--------:|:----------:|
+| $\lg n$     |              |             |           |          |          |          |            |
+| $\sqrt{n}$  |              |             |           |          |          |          |            |
+| $n$         |              |             |           |          |          |          |            |
+| $n\lg n$    |              |             |           |          |          |          |            |
+| $n^2$       |              |             |           |          |          |          |            |
+| $n^3$       |              |             |           |          |          |          |            |
+| $2^n$       |              |             |           |          |          |          |            |
+| $n!$        |              |             |           |          |          |          |            |
+
+## Notas del capítulo
+
+Hay muchos textos excelentes para tópicos generales de algoritmos, incluidos los de Aho, Hopcroft, y Ullman [5, 6]; Baase y Van Gelder [28]; Brassard y Bratley [54]; Dasgupta, Papadimitriou, y Vazirani [82]; Goodrich y Tamassia [148]; Hofri [175]; Horowitz, Sahni, y Rajasekaran [181]; Johnsonbaugh y
+Schaefer [193]; Kingston [205]; Kleinberg y Tardos [208]; Knuth [209, 210, 211]; Kozen [220]; Levitin [235]; Manber [242]; Mehlhorn [249, 250, 251]; Purdom and Brown [287]; Reingold, Nievergelt, y Deo [293]; Sedgewick [306]; Sedgewick y Flajolet [307]; Skiena [318]; and Wilf [356]. Algunos de los aspectos más prácticos del diseño de algoritmos son discutidos por Bentley [42, 43] y Gonnet [145]. Encuestas dentro del campo de los algoritmos también se pueden encontrar en el *Manual de Ciencia de la Computación Teórica, Volumen A* [342] y el CRC *Manual de Algoritmos y Teoría de la Computación* [25]. Revisiones de algoritmos usados en biología computacional pueden ser encontrados en libros de texto escritos por Gusfield [156], Pevzner [275], Setubal y Meidanis [310], y Waterman [350].
