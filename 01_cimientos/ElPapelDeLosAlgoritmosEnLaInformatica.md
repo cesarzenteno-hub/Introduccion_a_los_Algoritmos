@@ -24,13 +24,9 @@ $a'_1 \leq a'_2 \leq \dots \leq a'_n.$
 
 
 Por ejemplo, dada la secuencia de entrada 
-$
-\langle 31, 41, 59, 26, 41, 58 \rangle,
-$ 
+$\langle 31, 41, 59, 26, 41, 58 \rangle,$ 
 un algoritmo de ordenamiento devuelve como salida la secuencia 
-$
-\langle 26, 31, 41, 41, 58, 59 \rangle.
-$ 
+$\langle 26, 31, 41, 41, 58, 59 \rangle.$ 
 
 Dicha secuencia de entrada se denomina una **instancia del problema de ordenamiento**.  
 En general, una instancia de un problema consiste en la entrada (que satisface las restricciones impuestas en la definición del problema) 
@@ -203,4 +199,4 @@ Para cada función $f(n)$ y tiempo $t$ en la siguiente tabla, determina el tama�
 ## Notas del capítulo
 
 Hay muchos textos excelentes para tópicos generales de algoritmos, incluidos los de Aho, Hopcroft, y Ullman [5, 6]; Baase y Van Gelder [28]; Brassard y Bratley [54]; Dasgupta, Papadimitriou, y Vazirani [82]; Goodrich y Tamassia [148]; Hofri [175]; Horowitz, Sahni, y Rajasekaran [181]; Johnsonbaugh y
-Schaefer [193]; Kingston [205]; Kleinberg y Tardos [208]; Knuth [209, 210, 211]; Kozen [220]; Levitin [235]; Manber [242]; Mehlhorn [249, 250, 251]; Purdom y Brown [287]; Reingold, Nievergelt, y Deo [293]; Sedgewick [306]; Sedgewick y Flajolet [307]; Skiena [318]; and Wilf [356]. Algunos de los aspectos más prácticos del diseño de algoritmos son discutidos por Bentley [42, 43] y Gonnet [145]. Encuestas dentro del campo de los algoritmos también se pueden encontrar en el *Manual de Ciencia de la Computación Teórica, Volumen A* [342] y el CRC *Manual de Algoritmos y Teoría de la Computación* [25]. Revisiones de algoritmos usados en biología computacional pueden ser encontrados en libros de texto escritos por Gusfield [156], Pevzner [275], Setubal y Meidanis [310], y Waterman [350].
+Schaefer [193]; Kingston [205]; Kleinberg y Tardos [208]; Knuth [209, 210, 211]; Kozen [220]; Levitin [235]; Manber [242]; Mehlhorn [249, 250, 251]; Purdom y Brown [287]; Reingold, Nievergelt, y Deo [293]; Sedgewick [306]; Sedgewick y Flajolet [307]; Skiena [318]; y Wilf [356]. Algunos de los aspectos más prácticos del diseño de algoritmos son discutidos por Bentley [42, 43] y Gonnet [145]. Encuestas dentro del campo de los algoritmos también se pueden encontrar en el *Manual de Ciencia de la Computación Teórica, Volumen A* [342] y el CRC *Manual de Algoritmos y Teoría de la Computación* [25]. Revisiones de algoritmos usados en biología computacional pueden ser encontrados en libros de texto escritos por Gusfield [156], Pevzner [275], Setubal y Meidanis [310], y Waterman [350].
