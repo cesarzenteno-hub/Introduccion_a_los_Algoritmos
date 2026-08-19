@@ -62,9 +62,9 @@ La tercera propiedad es, tal vez, la más importante, pues estamos usando la inv
 
 Veamos cómo estas propiedades se mantienen para el ordenamiento por inserción.
 
-**Inicialización:** Comenzamos por mostrar que la invariante de bucle se mantiene antes de la primera iteración, cuando $j = 2$.[^1] El subarreglo $A[1..j - 1]$, entonces, consiste simplemente solo del elemento $A[1]$ que es, de hecho, el elemento original en $A[1]. Además, este subarreglo está ordenado (trivialmente, claro), los que nos muestra que la invariante de bucle se mantiene antes de la primera iteración del bucle.
+**Inicialización:** Comenzamos por mostrar que la invariante de bucle se mantiene antes de la primera iteración, cuando $j = 2$.[^1] El subarreglo $A[1..j - 1]$, entonces, consiste simplemente solo del elemento $A[1]$ que es, de hecho, el elemento original en $A[1]$. Además, este subarreglo está ordenado (trivialmente, claro), los que nos muestra que la invariante de bucle se mantiene antes de la primera iteración del bucle.
 
-[^1]: Cuando el bucle es un bucle **for**, el momento en el que verificamos la invariante de bucle justo antes de la primera iteración está inmediatamente después de la asignación inicial a la variable contador de bucle y justo antes de la primera prueba en el encabezado del bucle. El el caso de $ORDENAMIENTO-INSERCION$, esta vez está después de la asignación de 2 de las variables $j$ pero antes de la primera prueba que determina $j \leq A.length$.
+[^1]: Cuando el bucle es un bucle **for**, el momento en el que verificamos la invariante de bucle justo antes de la primera iteración está inmediatamente después de la asignación inicial a la variable contador de bucle y justo antes de la primera prueba en el encabezado del bucle. En el caso de `ORDENAMIENTO-INSERCION`, esta vez está después de la asignación de 2 de las variables $`j`$ pero antes de la primera prueba que determina $`j \leq A.\mathrm{length}`$.
 
 **Mantenimiento:** Después, abordamos la segunda propiedad: mostramos que cada iteración mantiene la invariante del bucle. Informalmente, el cuerrto del bucle **for** funciona moviendo $A[j - 1]$, $A[j - 2]$, A[j - 3], y así en una posición a la derecha hasta que encuentre la posición apropiada para $A[j]$ (líneas 4-7), en la cuál inserta el valor de $A[j]$ (línea 8). El subarreglo $A[1..j]$ entonces, consiste de los elementos originalmente en $A[1..j]$, pero acomodados en orden. El incremento de $j$ para la siguiente iteración del bucle **for** entonces preserva la invariante de bucle.
 
@@ -78,6 +78,6 @@ Usaremos este método de la invariante de bucle para mostrar la exactitud poster
 
 Usamos las siguientes convenciones en nuestro pseudocódigo
 
-- La identación indica estructuras de bloques. Por ejemplo, el cuerpo del bucle **for** que comienza en la línea 1 consiste de las líneas 2-8, y el cuerpo del bucle **while** que comienza en la línea 5 contiene las líneas 6-7 pero no la línea 8. Nuestro estilo de identación aplica también a las declaraciones **if-else**. Usando identación en lugar de los indicadores convencionales de estrucutras de bloques, tales como las declaraciones **begin** y **end**, reduce enormenente el desorden mientras conserva, o incluso mejora, la claridad.
+- La identación indica estructuras de bloques. Por ejemplo, el cuerpo del bucle **for** que comienza en la línea 1 consiste de las líneas 2-8, y el cuerpo del bucle **while** que comienza en la línea 5 contiene las líneas 6-7 pero no la línea 8. Nuestro estilo de identación aplica también a las declaraciones **if-else**[^2]. Usando identación en lugar de los indicadores convencionales de estrucutras de bloques, tales como las declaraciones **begin** y **end**, reduce enormenente el desorden mientras conserva, o incluso mejora, la claridad.
 
 -- TODO : Continuar en la página 17
